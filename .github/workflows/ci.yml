@@ -1,0 +1,23 @@
+name: "Ci for sample 2"
+
+on:
+    push:
+        branches:
+            - master
+            - main
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Install node.js"
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "21"
+            - name: "Clone repository"
+              uses: actions/checkout@v2
+            - name: "Check node version"
+              run: node --version
+            - name: "Install dependencies"
+              run: npm install
+            - name: "Run build"
+              run: npm run build
